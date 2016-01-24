@@ -2,6 +2,6 @@
 """ Исключения """
 
 
-class BaseAuthException(Exception):
+class BaseServiceException(Exception):
     """ Базовый класс исключений """
     code = 0
