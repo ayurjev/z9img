@@ -24,8 +24,10 @@ class ImageProcessor(object):
         else:
             height = size
             width = k * height
+
         img.thumbnail((int(width), int(height)), Image.ANTIALIAS)
         b = BytesIO()
+        img = img.convert('RGB')
         img.save(b, "JPEG", quality=85)
         print(len(b.getvalue()))
         return BytesIO(b.getvalue())
@@ -44,6 +46,7 @@ class ImageProcessor(object):
             box = [int(i*scale_factor) for i in box]
         img = img.crop(box)
         b = BytesIO()
+        img = img.convert('RGB')
         img.save(b, "JPEG", quality=100)
         return BytesIO(b.getvalue())
 
